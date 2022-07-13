@@ -1,0 +1,537 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Build from Sources &mdash; PaddlePaddle  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PaddlePaddle  documentation" href="../index.html"/>
+        <link rel="up" title="Install and Build" href="index_en.html"/>
+        <link rel="next" title="HOW TO" href="../howto/index_en.html"/>
+        <link rel="prev" title="Run in Docker Containers" href="docker_install_en.html"/> 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b9a314ab40d04d805655aab1deee08ba";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_en.html" class="icon icon-home"> PaddlePaddle
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+<nav class="doc-menu-vertical" role="navigation">
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getstarted/index_en.html">GET STARTED</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getstarted/quickstart_en.html">Quick Start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getstarted/concepts/use_concepts_en.html">Basic Concept</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_en.html">Install and Build</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pip_install_en.html">Install using pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_install_en.html">Run in Docker Containers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Build from Sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index_en.html">HOW TO</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../howto/cmd_parameter/index_en.html">Set Command-line Parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cmd_parameter/use_case_en.html">Use Case</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cmd_parameter/arguments_en.html">Argument Outline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cmd_parameter/detail_introduction_en.html">Detail Description</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/cluster/index_en.html">Distributed Training</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cluster/preparations_en.html">Preparations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cluster/cmd_argument_en.html">Command-line arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cluster/multi_cluster/index_en.html">Use different clusters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../howto/cluster/multi_cluster/fabric_en.html">Fabric</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/cluster/multi_cluster/openmpi_en.html">OpenMPI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/cluster/multi_cluster/k8s_en.html">Kubernetes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/cluster/multi_cluster/k8s_aws_en.html">Kubernetes on AWS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/capi/index_en.html">C-API Prediction Library</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/capi/compile_paddle_lib_en.html">Install and Build</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/capi/organization_of_the_inputs_en.html">Input/Output Data Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/capi/workflow_of_capi_en.html">C-API Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/rnn/index_en.html">RNN Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/rnn/rnn_config_en.html">RNN Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/rnn/recurrent_group_en.html">Recurrent Group Tutorial</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/rnn/hierarchical_layer_en.html">Layers supporting hierarchical sequence as input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/rnn/hrnn_rnn_api_compare_en.html">API comparision between RNN and hierarchical RNN</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/optimization/gpu_profiling_en.html">Tune GPU Performance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index_en.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/contribute_to_paddle_en.html">Contribute Code</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/write_docs_en.html">Contribute Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/new_layer_en.html">Write New Layers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index_en.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build_and_install/index_en.html">Install, Build and Unit test</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/model/index_en.html">Model Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/parameter/index_en.html">Parameter Setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/local/index_en.html">Local Training and Prediction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/cluster/index_en.html">Cluster Training and Prediction</a></li>
+</ul>
+</li>
+</ul>
+
+</nav>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_en.html">PaddlePaddle</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_en.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index_en.html">Install and Build</a> &raquo;</li>
+      
+    <li>Build from Sources</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/build_and_install/build_from_source_en.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="build-from-sources">
+<h1>Build from Sources<a class="headerlink" href="#build-from-sources" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<span id="id1"></span><h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>To build PaddlePaddle, you need</p>
+<ol class="arabic simple">
+<li>A computer &#8211; Linux, Windows, MacOS.</li>
+<li>Docker.</li>
+</ol>
+<p>Nothing else.  Not even Python and GCC, because you can install all build tools into a Docker image.
+We run all the tools by running this image.</p>
+</div>
+<div class="section" id="how-to-build">
+<span id="build-step"></span><h2>How To Build<a class="headerlink" href="#how-to-build" title="Permalink to this headline">¶</a></h2>
+<p>You need to use Docker to build PaddlePaddle
+to avoid installing dependencies by yourself. We have several pre-built
+Docker images <a class="reference external" href="https://hub.docker.com/r/paddlepaddle/paddle_manylinux_devel/tags/">here</a> ,
+Or you can build your own image from source as the optional step below:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># 1. clone the source code</span>
+git clone https://github.com/PaddlePaddle/Paddle.git
+<span class="nb">cd</span> Paddle
+<span class="c1"># 2. Optional: build development docker image from source</span>
+docker build -t paddle:dev .
+<span class="c1"># 3. Run the following command to build a CPU-Only binaries</span>
+docker run -it -v <span class="nv">$PWD</span>:/paddle -e <span class="s2">&quot;WITH_GPU=OFF&quot;</span> -e <span class="s2">&quot;WITH_TESTING=OFF&quot;</span> paddlepaddle/paddle_manylinux_devel:cuda8.0_cudnn5 bash -x /paddle/paddle/scripts/docker/build.sh
+<span class="c1"># 4. Or, use your built Docker image to build PaddlePaddle (must run step 2)</span>
+docker run -it -v <span class="nv">$PWD</span>:/paddle -e <span class="s2">&quot;WITH_GPU=OFF&quot;</span> -e <span class="s2">&quot;WITH_TESTING=OFF&quot;</span> paddle:dev
+</pre></div>
+</div>
+<p>NOTE: The above command try to mount the current working directory (root directory of source code)
+into <code class="code docutils literal"><span class="pre">/paddle</span></code> directory inside docker container. If you are using your own image
+(Step 4) it will run default entry-point <code class="code docutils literal"><span class="pre">build.sh</span></code> , so you could omit the last
+command in step 3.</p>
+<p>When the compile finishes, you can get the output whl package under
+build/python/dist, then you can choose to install the whl on local
+machine or copy it to the target machine.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install build/python/dist/*.whl
+</pre></div>
+</div>
+<p>If the machine has installed PaddlePaddle before, there are two methods:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">1</span>. uninstall and reinstall
+pip uninstall paddlepaddle
+pip install build/python/dist/*.whl
+
+<span class="m">2</span>. upgrade directly
+pip install build/python/dist/*.whl -U
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-tests">
+<span id="run-test"></span><h2>Run Tests<a class="headerlink" href="#run-tests" title="Permalink to this headline">¶</a></h2>
+<p>If you wish to run the tests, you may follow the below steps:</p>
+<p>When using Docker, set <code class="code docutils literal"><span class="pre">RUN_TEST=ON</span></code> and <code class="code docutils literal"><span class="pre">WITH_TESTING=ON</span></code> will run test immediately after the build.
+Set <code class="code docutils literal"><span class="pre">WITH_GPU=ON</span></code> Can also run tests on GPU.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>docker run -it -v <span class="nv">$PWD</span>:/paddle -e <span class="s2">&quot;WITH_GPU=OFF&quot;</span> -e <span class="s2">&quot;WITH_TESTING=ON&quot;</span> -e <span class="s2">&quot;RUN_TEST=ON&quot;</span> paddlepaddle/paddle_manylinux_devel:cuda8.0_cudnn5 bash -x paddle/paddle/scripts/docker/build.sh
+</pre></div>
+</div>
+<p>If you wish to run only one unit test, like <code class="code docutils literal"><span class="pre">test_sum_op</span></code>:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>docker run -it -v <span class="nv">$PWD</span>:/paddle -e <span class="s2">&quot;WITH_GPU=OFF&quot;</span> -e <span class="s2">&quot;WITH_TESTING=ON&quot;</span> -e <span class="s2">&quot;RUN_TEST=OFF&quot;</span> paddlepaddle/paddle_manylinux_devel:cuda8.0_cudnn5 /bin/bash
+bash /paddle/paddle/scripts/docker/build.sh
+<span class="nb">cd</span> /paddle/build
+ctest -R test_sum_op -V
+</pre></div>
+</div>
+</div>
+<div class="section" id="frequently-asked-questions">
+<span id="faq-docker"></span><h2>Frequently Asked Questions<a class="headerlink" href="#frequently-asked-questions" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">What is Docker?</p>
+<p>If you haven&#8217;t heard of it, consider it something like Python&#8217;s virtualenv.</p>
+</li>
+<li><p class="first">Docker or virtual machine?</p>
+<p>Some people compare Docker with VMs, but Docker doesn&#8217;t virtualize any hardware nor running a guest OS, which means there is no compromise on the performance.</p>
+</li>
+<li><p class="first">Why Docker?</p>
+<p>Using a Docker image of build tools standardizes the building environment, which makes it easier for others to reproduce your problems and to help.</p>
+<p>Also, some build tools don&#8217;t run on Windows or Mac or BSD, but Docker runs almost everywhere, so developers can use whatever computer they want.</p>
+</li>
+<li><p class="first">Can I choose not to use Docker?</p>
+<p>Sure, you don&#8217;t have to install build tools into a Docker image; instead, you can install them on your local computer.  This document exists because Docker would make the development way easier.</p>
+</li>
+<li><p class="first">How difficult is it to learn Docker?</p>
+<blockquote>
+<div><p>It takes you ten minutes to read [an introductory article](<a class="reference external" href="https://docs.docker.com/get-started">https://docs.docker.com/get-started</a>) and saves you more than one hour to install all required build tools, configure them, especially when new versions of PaddlePaddle require some new tools.  Not even to mention the time saved when other people trying to reproduce the issue you have.</p>
+</div></blockquote>
+</li>
+<li><p class="first">Can I use my favorite IDE?</p>
+<p>Yes, of course.  The source code resides on your local computer, and you can edit it using whatever editor you like.</p>
+<p>Many PaddlePaddle developers are using Emacs.  They add the following few lines into their <cite>~/.emacs</cite> configure file:</p>
+<p><a href="#id2"><span class="problematic" id="id3">``</span></a><a href="#id4"><span class="problematic" id="id5">`</span></a>emacs
+(global-set-key &#8220;C-cc&#8221; &#8216;compile)
+(setq compile-command</p>
+<blockquote>
+<div><p>&#8220;docker run &#8211;rm -it -v $(git rev-parse &#8211;show-toplevel):/paddle paddle:dev&#8221;)</p>
+</div></blockquote>
+<p><a href="#id6"><span class="problematic" id="id7">``</span></a><a href="#id8"><span class="problematic" id="id9">`</span></a></p>
+<p>so they could type <cite>Ctrl-C</cite> and <cite>c</cite> to build PaddlePaddle from source.</p>
+</li>
+<li><p class="first">Does Docker do parallel building?</p>
+<p>Our building Docker image runs a [Bash script](<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/blob/develop/paddle/scripts/docker/build.sh">https://github.com/PaddlePaddle/Paddle/blob/develop/paddle/scripts/docker/build.sh</a>), which calls <cite>make -j$(nproc)</cite> to starts as many processes as the number of your CPU cores.</p>
+</li>
+<li><p class="first">Docker requires sudo</p>
+<p>An owner of a computer has the administrative privilege, a.k.a., sudo, and Docker requires this privilege to work properly.  If you use a shared computer for development, please ask the administrator to install and configure Docker.  We will do our best to support rkt, another container technology that doesn&#8217;t require sudo.</p>
+</li>
+<li><p class="first">Docker on Windows/MacOS builds slowly</p>
+<p>On Windows and MacOS, Docker containers run in a Linux VM.  You might want to give this VM some more memory and CPUs so to make the building efficient.  Please refer to [this issue](<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/627">https://github.com/PaddlePaddle/Paddle/issues/627</a>) for details.</p>
+</li>
+<li><p class="first">Not enough disk space</p>
+<p>Examples in this article use option <cite>&#8211;rm</cite> with the <cite>docker run</cite> command.  This option ensures that stopped containers do not exist on hard disks.  We can use <cite>docker ps -a</cite> to list all containers, including stopped.  Sometimes <cite>docker build</cite> generates some intermediate dangling images, which also take disk space.  To clean them, please refer to [this article](<a class="reference external" href="https://zaiste.net/posts/removing_docker_containers/">https://zaiste.net/posts/removing_docker_containers/</a>).</p>
+</li>
+</ul>
+</div>
+<div class="section" id="appendix-compile-dependencies">
+<span id="compile-deps"></span><h2>Appendix: Compile Dependencies<a class="headerlink" href="#appendix-compile-dependencies" title="Permalink to this headline">¶</a></h2>
+<p>PaddlePaddle need the following dependencies when compiling, other dependencies
+will be downloaded automatically.</p>
+<table border="1" class="colwidths-given docutils" id="id11">
+<caption><span class="caption-text">PaddlePaddle Compile Dependencies</span><a class="headerlink" href="#id11" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="18%" />
+<col width="27%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Dependency</th>
+<th class="head">Version</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CMake</td>
+<td>&gt;=3.2</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>GCC</td>
+<td>4.8.2</td>
+<td>Recommend devtools2 for CentOS</td>
+</tr>
+<tr class="row-even"><td>Python</td>
+<td>2.7.x</td>
+<td>Need libpython2.7.so</td>
+</tr>
+<tr class="row-odd"><td>pip</td>
+<td>&gt;=9.0</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>numpy</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>SWIG</td>
+<td>&gt;=2.0</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Go</td>
+<td>&gt;=1.8</td>
+<td>Optional</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="appendix-build-options">
+<span id="build-options"></span><h2>Appendix: Build Options<a class="headerlink" href="#appendix-build-options" title="Permalink to this headline">¶</a></h2>
+<p>Build options include whether build binaries for CPU or GPU, which BLAS
+library to use etc. You may pass these settings when running cmake.
+For detailed cmake tutorial please refer to <a class="reference external" href="https://cmake.org/cmake-tutorial">here</a> 。</p>
+<p>You can add <code class="code docutils literal"><span class="pre">-D</span></code> argument to pass such options, like:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake .. -DWITH_GPU<span class="o">=</span>OFF
+</pre></div>
+</div>
+<table border="1" class="colwidths-given docutils" id="id12">
+<caption><span class="caption-text">Bool Type Options</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="70%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>WITH_GPU</td>
+<td>Build with GPU support</td>
+<td>ON</td>
+</tr>
+<tr class="row-odd"><td>WITH_C_API</td>
+<td>Build only CAPI</td>
+<td>OFF</td>
+</tr>
+<tr class="row-even"><td>WITH_DOUBLE</td>
+<td>Build with double precision</td>
+<td>OFF</td>
+</tr>
+<tr class="row-odd"><td>WITH_DSO</td>
+<td>Dynamically load CUDA libraries</td>
+<td>ON</td>
+</tr>
+<tr class="row-even"><td>WITH_AVX</td>
+<td>Build with AVX support</td>
+<td>ON</td>
+</tr>
+<tr class="row-odd"><td>WITH_PYTHON</td>
+<td>Build with integrated Python interpreter</td>
+<td>ON</td>
+</tr>
+<tr class="row-even"><td>WITH_STYLE_CHECK</td>
+<td>Check code style when building</td>
+<td>ON</td>
+</tr>
+<tr class="row-odd"><td>WITH_TESTING</td>
+<td>Build unit tests</td>
+<td>OFF</td>
+</tr>
+<tr class="row-even"><td>WITH_DOC</td>
+<td>Build documentations</td>
+<td>OFF</td>
+</tr>
+<tr class="row-odd"><td>WITH_SWIG_PY</td>
+<td>Build Python SWIG interface for V2 API</td>
+<td>Auto</td>
+</tr>
+<tr class="row-even"><td>WITH_GOLANG</td>
+<td>Build fault-tolerant parameter server written in go</td>
+<td>OFF</td>
+</tr>
+<tr class="row-odd"><td>WITH_MKL</td>
+<td>Use MKL as BLAS library, else use OpenBLAS</td>
+<td>ON</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="blas">
+<h3>BLAS<a class="headerlink" href="#blas" title="Permalink to this headline">¶</a></h3>
+<p>PaddlePaddle supports <a class="reference external" href="https://software.intel.com/en-us/intel-mkl">MKL</a> and
+<a class="reference external" href="http://www.openblas.net/">OpenBlAS</a> as BLAS library。By default it uses MKL.
+If you are using MKL and your machine supports AVX2, MKL-DNN will also be downloaded
+and used, for more <a class="reference external" href="https://github.com/PaddlePaddle/Paddle/tree/develop/doc/design/mkldnn#cmake">details</a> .</p>
+<p>If you choose not to use MKL, then OpenBlAS will be used.</p>
+</div>
+<div class="section" id="cuda-cudnn">
+<h3>CUDA/cuDNN<a class="headerlink" href="#cuda-cudnn" title="Permalink to this headline">¶</a></h3>
+<p>PaddlePaddle will automatically find CUDA and cuDNN when compiling and running.
+parameter <code class="code docutils literal"><span class="pre">-DCUDA_ARCH_NAME=Auto</span></code> can be used to detect SM architecture
+automatically in order to speed up the build.</p>
+<p>PaddlePaddle can build with any version later than cuDNN v5.1, and we intend to
+keep on with latest cuDNN versions. Be sure to run with the same version of cuDNN
+you built.</p>
+</div>
+<div class="section" id="pass-compile-options">
+<h3>Pass Compile Options<a class="headerlink" href="#pass-compile-options" title="Permalink to this headline">¶</a></h3>
+<p>You can pass compile options to use intended BLAS/CUDA/Cudnn libraries.
+When running cmake command, it will search system paths like
+<code class="code docutils literal"><span class="pre">/usr/lib:/usr/local/lib</span></code> and then search paths that you
+passed to cmake, i.e.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake .. -DWITH_GPU<span class="o">=</span>ON -DWITH_TESTING<span class="o">=</span>OFF -DCUDNN_ROOT<span class="o">=</span>/opt/cudnnv5
+</pre></div>
+</div>
+<p><strong>NOTE: These options only take effect when running cmake for the first time, you need to clean the cmake cache or clean the build directory (</strong> <code class="code docutils literal"><span class="pre">rm</span> <span class="pre">-rf</span></code> <strong>) if you want to change it.</strong></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../howto/index_en.html" class="btn btn-neutral float-right" title="HOW TO" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="docker_install_en.html" class="btn btn-neutral" title="Run in Docker Containers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, PaddlePaddle developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

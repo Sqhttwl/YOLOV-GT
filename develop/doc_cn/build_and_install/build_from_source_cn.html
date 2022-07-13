@@ -1,0 +1,527 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>从源码编译 &mdash; PaddlePaddle  文档</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="索引"
+              href="../genindex.html"/>
+        <link rel="search" title="搜索" href="../search.html"/>
+    <link rel="top" title="PaddlePaddle  文档" href="../index.html"/>
+        <link rel="up" title="安装与编译" href="index_cn.html"/>
+        <link rel="next" title="进阶使用" href="../howto/index_cn.html"/>
+        <link rel="prev" title="使用Docker安装运行" href="docker_install_cn.html"/> 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b9a314ab40d04d805655aab1deee08ba";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_cn.html" class="icon icon-home"> PaddlePaddle
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+<nav class="doc-menu-vertical" role="navigation">
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getstarted/index_cn.html">新手入门</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getstarted/quickstart_cn.html">快速开始</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getstarted/concepts/use_concepts_cn.html">基本使用概念</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index_cn.html">安装与编译</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pip_install_cn.html">使用pip安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker_install_cn.html">使用Docker安装运行</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">从源码编译</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/index_cn.html">进阶使用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../howto/cmd_parameter/index_cn.html">命令行参数设置</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cmd_parameter/use_case_cn.html">使用案例</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cmd_parameter/arguments_cn.html">参数概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cmd_parameter/detail_introduction_cn.html">细节描述</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/cluster/index_cn.html">分布式训练</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cluster/preparations_cn.html">环境准备</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cluster/cmd_argument_cn.html">启动参数说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/cluster/multi_cluster/index_cn.html">在不同集群中运行</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../howto/cluster/multi_cluster/k8s_cn.html">Kubernetes单机训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/cluster/multi_cluster/k8s_distributed_cn.html">Kubernetes分布式训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/cluster/multi_cluster/openmpi_cn.html">在OpenMPI集群中启动训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/cluster/multi_cluster/fabric_cn.html">使用fabric启动集群训练</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../howto/cluster/multi_cluster/k8s_aws_cn.html">Kubernetes on AWS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/capi/index_cn.html">C-API预测库</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/capi/compile_paddle_lib_cn.html">安装与编译C-API预测库</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/capi/organization_of_the_inputs_cn.html">输入/输出数据组织</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/capi/workflow_of_capi_cn.html">C-API使用流程</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/rnn/index_cn.html">RNN模型</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../howto/rnn/rnn_config_cn.html">RNN配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/rnn/recurrent_group_cn.html">Recurrent Group教程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/rnn/hierarchical_layer_cn.html">支持双层序列作为输入的Layer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/rnn/hrnn_rnn_api_compare_cn.html">单双层RNN API对比介绍</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../howto/optimization/gpu_profiling_cn.html">GPU性能调优</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../dev/index_cn.html">开发标准</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../dev/contribute_to_paddle_cn.html">如何贡献代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/write_docs_cn.html">如何贡献文档</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../dev/new_layer_cn.html">如何实现新的网络层</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index_cn.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../faq/build_and_install/index_cn.html">编译安装与单元测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/model/index_cn.html">模型配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/parameter/index_cn.html">参数设置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/local/index_cn.html">本地训练与预测</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../faq/cluster/index_cn.html">集群训练与预测</a></li>
+</ul>
+</li>
+</ul>
+
+</nav>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_cn.html">PaddlePaddle</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_cn.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index_cn.html">安装与编译</a> &raquo;</li>
+      
+    <li>从源码编译</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/build_and_install/build_from_source_cn.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>从源码编译<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="requirements">
+<span id="id2"></span><h2>需要的软硬件<a class="headerlink" href="#requirements" title="永久链接至标题">¶</a></h2>
+<p>为了编译PaddlePaddle，我们需要</p>
+<ol class="arabic simple">
+<li>一台电脑，可以装的是 Linux, Windows 或者 MacOS 操作系统</li>
+<li>Docker</li>
+</ol>
+<p>不需要依赖其他任何软件了。即便是 Python 和 GCC 都不需要，因为我们会把所有编译工具都安装进一个 Docker 镜像里。</p>
+</div>
+<div class="section" id="build-step">
+<span id="id3"></span><h2>编译方法<a class="headerlink" href="#build-step" title="永久链接至标题">¶</a></h2>
+<p>PaddlePaddle需要使用Docker环境完成编译，这样可以免去单独安装编译依赖的步骤，可选的不同编译环境Docker镜像
+可以在 <a class="reference external" href="https://hub.docker.com/r/paddlepaddle/paddle_manylinux_devel/tags/">这里</a> 找到。或者
+参考下述可选步骤，从源码中构建用于编译PaddlePaddle的Docker镜像。</p>
+<p>如果您选择不使用Docker镜像，则需要在本机安装下面章节列出的 <a href="#id22"><span class="problematic" id="id23">`编译依赖`_</span></a> 之后才能开始编译的步骤。</p>
+<p>编译PaddlePaddle，需要执行：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># 1. 获取源码</span>
+git clone https://github.com/PaddlePaddle/Paddle.git
+<span class="nb">cd</span> Paddle
+<span class="c1"># 2. 可选步骤：源码中构建用于编译PaddlePaddle的Docker镜像</span>
+docker build -t paddle:dev .
+<span class="c1"># 3. 执行下面的命令编译CPU-Only的二进制</span>
+docker run -it -v <span class="nv">$PWD</span>:/paddle -e <span class="s2">&quot;WITH_GPU=OFF&quot;</span> -e <span class="s2">&quot;WITH_TESTING=OFF&quot;</span> paddlepaddle/paddle_manylinux_devel:cuda8.0_cudnn5 bash -x /paddle/paddle/scripts/docker/build.sh
+<span class="c1"># 4. 或者也可以使用为上述可选步骤构建的镜像（必须先执行第2步）</span>
+docker run -it -v <span class="nv">$PWD</span>:/paddle -e <span class="s2">&quot;WITH_GPU=OFF&quot;</span> -e <span class="s2">&quot;WITH_TESTING=OFF&quot;</span> paddle:dev
+</pre></div>
+</div>
+<p>注：上述命令把当前目录（源码树根目录）映射为 container 里的 <code class="code docutils literal"><span class="pre">/paddle</span></code> 目录。如果使用自行
+构建的镜像（上述第4步）会执行 <code class="code docutils literal"><span class="pre">Dockerfile</span></code> 描述的默认入口程序 <code class="code docutils literal"><span class="pre">build.sh</span></code> 可以省略步骤3中
+最后的执行脚本的命令。</p>
+<p>编译完成后会在build/python/dist目录下生成输出的whl包，可以选在在当前机器安装也可以拷贝到目标机器安装：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>pip install build/python/dist/*.whl
+</pre></div>
+</div>
+<p>如果机器中已经安装过PaddlePaddle，有两种方法：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="m">1</span>. 先卸载之前的版本，再重新安装
+pip uninstall paddlepaddle
+pip install build/python/dist/*.whl
+
+<span class="m">2</span>. 直接升级到更新的版本
+pip install build/python/dist/*.whl -U
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-test">
+<span id="id5"></span><h2>执行单元测试<a class="headerlink" href="#run-test" title="永久链接至标题">¶</a></h2>
+<p>如果您期望在编译完成后立即执行所有的单元测试，可以按照下面的方法：</p>
+<p>设置 <code class="code docutils literal"><span class="pre">RUN_TEST=ON</span></code> 和 <code class="code docutils literal"><span class="pre">WITH_TESTING=ON</span></code> 就会在完成编译之后，立即执行单元测试。
+开启 <code class="code docutils literal"><span class="pre">WITH_GPU=ON</span></code> 可以指定同时执行GPU上的单元测试。</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>docker run -it -v <span class="nv">$PWD</span>:/paddle -e <span class="s2">&quot;WITH_GPU=OFF&quot;</span> -e <span class="s2">&quot;WITH_TESTING=ON&quot;</span> -e <span class="s2">&quot;RUN_TEST=ON&quot;</span> paddlepaddle/paddle_manylinux_devel:cuda8.0_cudnn5 bash -x /paddle/paddle/scripts/docker/build.sh
+</pre></div>
+</div>
+<p>如果期望执行其中一个单元测试，（比如 <code class="code docutils literal"><span class="pre">test_sum_op</span></code> ）：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>docker run -it -v <span class="nv">$PWD</span>:/paddle -e <span class="s2">&quot;WITH_GPU=OFF&quot;</span> -e <span class="s2">&quot;WITH_TESTING=ON&quot;</span> -e <span class="s2">&quot;RUN_TEST=OFF&quot;</span> paddlepaddle/paddle_manylinux_devel:cuda8.0_cudnn5 /bin/bash
+bash /paddle/paddle/scripts/docker/build.sh
+<span class="nb">cd</span> /paddle/build
+ctest -R test_sum_op -V
+</pre></div>
+</div>
+</div>
+<div class="section" id="faq-docker">
+<span id="id6"></span><h2>常见问题<a class="headerlink" href="#faq-docker" title="永久链接至标题">¶</a></h2>
+<ul>
+<li><p class="first">什么是 Docker?</p>
+<p>如果您没有听说 Docker，可以把它想象为一个类似 virtualenv 的系统，但是虚拟的不仅仅是 Python 的运行环境。</p>
+</li>
+<li><p class="first">Docker 还是虚拟机？</p>
+<p>有人用虚拟机来类比 Docker。需要强调的是：Docker 不会虚拟任何硬件，Docker container 里运行的编译工具实际上都是在本机的 CPU 和操作系统上直接运行的，性能和把编译工具安装在本机运行一样。</p>
+</li>
+<li><p class="first">为什么用 Docker?</p>
+<p>把工具和配置都安装在一个 Docker image 里可以标准化编译环境。这样如果遇到问题，其他人可以复现问题以便帮助。</p>
+<p>另外，对于习惯使用Windows和MacOS的开发者来说，使用Docker就不用配置交叉编译环境了。</p>
+</li>
+<li><p class="first">我可以选择不用Docker吗？</p>
+<p>当然可以。大家可以用把开发工具安装进入 Docker image 一样的方式，把这些工具安装到本机。这篇文档介绍基于 Docker 的开发流程，是因为这个流程比其他方法都更简便。</p>
+</li>
+<li><p class="first">学习 Docker 有多难？</p>
+<p>理解 Docker 并不难，大概花十分钟看一下[这篇文章](<a class="reference external" href="https://zhuanlan.zhihu.com/p/19902938">https://zhuanlan.zhihu.com/p/19902938</a>)。这可以帮您省掉花一小时安装和配置各种开发工具，以及切换机器时需要新安装的辛苦。别忘了 PaddlePaddle 更新可能导致需要新的开发工具。更别提简化问题复现带来的好处了。</p>
+</li>
+<li><p class="first">我可以用 IDE 吗？</p>
+<p>当然可以，因为源码就在本机上。IDE 默认调用 make 之类的程序来编译源码，我们只需要配置 IDE 来调用 Docker 命令编译源码即可。</p>
+<p>很多 PaddlePaddle 开发者使用 Emacs。他们在自己的 <cite>~/.emacs</cite> 配置文件里加两行</p>
+<p><a href="#id7"><span class="problematic" id="id8">``</span></a><a href="#id9"><span class="problematic" id="id10">`</span></a>emacs
+(global-set-key &#8220;C-cc&#8221; &#8216;compile)
+(setq compile-command</p>
+<blockquote>
+<div><p>&#8220;docker run &#8211;rm -it -v $(git rev-parse &#8211;show-toplevel):/paddle paddle:dev&#8221;)</p>
+</div></blockquote>
+<p><a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a></p>
+<p>就可以按 <cite>Ctrl-C</cite> 和 <cite>c</cite> 键来启动编译了。</p>
+</li>
+<li><p class="first">可以并行编译吗？</p>
+<p>是的。我们的 Docker image 运行一个 [Bash 脚本](<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/blob/develop/paddle/scripts/docker/build.sh">https://github.com/PaddlePaddle/Paddle/blob/develop/paddle/scripts/docker/build.sh</a>)。这个脚本调用 <cite>make -j$(nproc)</cite> 来启动和 CPU 核一样多的进程来并行编译。</p>
+</li>
+<li><p class="first">Docker 需要 sudo</p>
+<p>如果用自己的电脑开发，自然也就有管理员权限（sudo）了。如果用公用的电脑开发，需要请管理员安装和配置好 Docker。此外，PaddlePaddle 项目在努力开始支持其他不需要 sudo 的集装箱技术，比如 rkt。</p>
+</li>
+<li><p class="first">在 Windows/MacOS 上编译很慢</p>
+<p>Docker 在 Windows 和 MacOS 都可以运行。不过实际上是运行在一个 Linux 虚拟机上。可能需要注意给这个虚拟机多分配一些 CPU 和内存，以保证编译高效。具体做法请参考[这个issue](<a class="reference external" href="https://github.com/PaddlePaddle/Paddle/issues/627">https://github.com/PaddlePaddle/Paddle/issues/627</a>)。</p>
+</li>
+<li><p class="first">磁盘不够</p>
+<p>本文中的例子里，<cite>docker run</cite> 命令里都用了 <cite>&#8211;rm</cite> 参数，这样保证运行结束之后的 containers 不会保留在磁盘上。可以用 <cite>docker ps -a</cite> 命令看到停止后但是没有删除的 containers。<cite>docker build</cite> 命令有时候会产生一些中间结果，是没有名字的 images，也会占用磁盘。可以参考[这篇文章](<a class="reference external" href="https://zaiste.net/posts/removing_docker_containers/">https://zaiste.net/posts/removing_docker_containers/</a>)来清理这些内容。</p>
+</li>
+</ul>
+</div>
+<div class="section" id="compile-deps">
+<span id="id15"></span><h2>附录：编译依赖<a class="headerlink" href="#compile-deps" title="永久链接至标题">¶</a></h2>
+<p>PaddlePaddle编译需要使用到下面的依赖（包含但不限于），其他的依赖软件，会自动在编译时下载。</p>
+<table border="1" class="colwidths-given docutils" id="id20">
+<caption><span class="caption-text">PaddlePaddle编译依赖</span><a class="headerlink" href="#id20" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col width="18%" />
+<col width="27%" />
+<col width="55%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">依赖</th>
+<th class="head">版本</th>
+<th class="head">说明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>CMake</td>
+<td>&gt;=3.2</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>GCC</td>
+<td>4.8.2</td>
+<td>推荐使用CentOS的devtools2</td>
+</tr>
+<tr class="row-even"><td>Python</td>
+<td>2.7.x</td>
+<td>依赖libpython2.7.so</td>
+</tr>
+<tr class="row-odd"><td>pip</td>
+<td>&gt;=9.0</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>numpy</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>SWIG</td>
+<td>&gt;=2.0</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td>Go</td>
+<td>&gt;=1.8</td>
+<td>可选</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="build-options">
+<span id="id16"></span><h2>附录：编译选项<a class="headerlink" href="#build-options" title="永久链接至标题">¶</a></h2>
+<p>PaddlePaddle的编译选项，包括生成CPU/GPU二进制文件、链接何种BLAS库等。
+用户可在调用cmake的时候设置它们，详细的cmake使用方法可以参考
+<a class="reference external" href="https://cmake.org/cmake-tutorial">官方文档</a> 。</p>
+<p>在cmake的命令行中，通过使用 <code class="docutils literal"><span class="pre">-D</span></code> 命令设置该类编译选项，例如：</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake .. -DWITH_GPU<span class="o">=</span>OFF
+</pre></div>
+</div>
+<table border="1" class="colwidths-given docutils" id="id21">
+<caption><span class="caption-text">编译选项说明</span><a class="headerlink" href="#id21" title="永久链接至表格">¶</a></caption>
+<colgroup>
+<col width="10%" />
+<col width="70%" />
+<col width="20%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">选项</th>
+<th class="head">说明</th>
+<th class="head">默认值</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>WITH_GPU</td>
+<td>是否支持GPU</td>
+<td>ON</td>
+</tr>
+<tr class="row-odd"><td>WITH_C_API</td>
+<td>是否仅编译CAPI</td>
+<td>OFF</td>
+</tr>
+<tr class="row-even"><td>WITH_DOUBLE</td>
+<td>是否使用双精度浮点数</td>
+<td>OFF</td>
+</tr>
+<tr class="row-odd"><td>WITH_DSO</td>
+<td>是否运行时动态加载CUDA动态库，而非静态加载CUDA动态库。</td>
+<td>ON</td>
+</tr>
+<tr class="row-even"><td>WITH_AVX</td>
+<td>是否编译含有AVX指令集的PaddlePaddle二进制文件</td>
+<td>ON</td>
+</tr>
+<tr class="row-odd"><td>WITH_PYTHON</td>
+<td>是否内嵌PYTHON解释器</td>
+<td>ON</td>
+</tr>
+<tr class="row-even"><td>WITH_STYLE_CHECK</td>
+<td>是否编译时进行代码风格检查</td>
+<td>ON</td>
+</tr>
+<tr class="row-odd"><td>WITH_TESTING</td>
+<td>是否开启单元测试</td>
+<td>OFF</td>
+</tr>
+<tr class="row-even"><td>WITH_DOC</td>
+<td>是否编译中英文文档</td>
+<td>OFF</td>
+</tr>
+<tr class="row-odd"><td>WITH_SWIG_PY</td>
+<td>是否编译PYTHON的SWIG接口，该接口可用于预测和定制化训练</td>
+<td>Auto</td>
+</tr>
+<tr class="row-even"><td>WITH_GOLANG</td>
+<td>是否编译go语言的可容错parameter server</td>
+<td>OFF</td>
+</tr>
+<tr class="row-odd"><td>WITH_MKL</td>
+<td>是否使用MKL数学库，如果为否则是用OpenBLAS</td>
+<td>ON</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="blas">
+<h3>BLAS<a class="headerlink" href="#blas" title="永久链接至标题">¶</a></h3>
+<p>PaddlePaddle支持 <a class="reference external" href="https://software.intel.com/en-us/intel-mkl">MKL</a> 和
+<a class="reference external" href="http://www.openblas.net/">OpenBlAS</a> 两种BLAS库。默认使用MKL。如果使用MKL并且机器含有AVX2指令集，
+还会下载MKL-DNN数学库，详细参考 <a class="reference external" href="https://github.com/PaddlePaddle/Paddle/tree/develop/doc/design/mkldnn#cmake">这里</a> 。</p>
+<p>如果关闭MKL，则会使用OpenBLAS作为BLAS库。</p>
+</div>
+<div class="section" id="cuda-cudnn">
+<h3>CUDA/cuDNN<a class="headerlink" href="#cuda-cudnn" title="永久链接至标题">¶</a></h3>
+<p>PaddlePaddle在编译时/运行时会自动找到系统中安装的CUDA和cuDNN库进行编译和执行。
+使用参数 <code class="code docutils literal"><span class="pre">-DCUDA_ARCH_NAME=Auto</span></code> 可以指定开启自动检测SM架构，加速编译。</p>
+<p>PaddlePaddle可以使用cuDNN v5.1之后的任何一个版本来编译运行，但尽量请保持编译和运行使用的cuDNN是同一个版本。
+我们推荐使用最新版本的cuDNN。</p>
+</div>
+<div class="section" id="id19">
+<h3>编译选项的设置<a class="headerlink" href="#id19" title="永久链接至标题">¶</a></h3>
+<p>PaddePaddle通过编译时指定路径来实现引用各种BLAS/CUDA/cuDNN库。cmake编译时，首先在系统路径（ <code class="code docutils literal"><span class="pre">/usr/lib:/usr/local/lib</span></code> ）中搜索这几个库，同时也会读取相关路径变量来进行搜索。 通过使用 <code class="docutils literal"><span class="pre">-D</span></code> 命令可以设置，例如</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>cmake .. -DWITH_GPU<span class="o">=</span>ON -DWITH_TESTING<span class="o">=</span>OFF -DCUDNN_ROOT<span class="o">=</span>/opt/cudnnv5
+</pre></div>
+</div>
+<p><strong>注意：这几个编译选项的设置，只在第一次cmake的时候有效。如果之后想要重新设置，推荐清理整个编译目录（</strong> <code class="code docutils literal"><span class="pre">rm</span> <span class="pre">-rf</span></code> ）**后，再指定。**</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../howto/index_cn.html" class="btn btn-neutral float-right" title="进阶使用" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="docker_install_cn.html" class="btn btn-neutral" title="使用Docker安装运行" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, PaddlePaddle developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+      <script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

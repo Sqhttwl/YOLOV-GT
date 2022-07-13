@@ -1,0 +1,329 @@
+
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>profiler &mdash; PaddlePaddle  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="PaddlePaddle  documentation" href="../index.html"/>
+        <link rel="up" title="Fluid" href="index.html"/>
+        <link rel="next" title="regularizer" href="regularizer.html"/>
+        <link rel="prev" title="param_attr" href="param_attr.html"/> 
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?b9a314ab40d04d805655aab1deee08ba";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index_en.html" class="icon icon-home"> PaddlePaddle
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+<nav class="doc-menu-vertical" role="navigation">
+
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../overview.html">V2 API Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../v2/model_configs.html">Model Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../v2/config/activation.html">Activation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../v2/config/layer.html">Layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../v2/config/evaluators.html">Evaluators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../v2/config/optimizer.html">Optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../v2/config/pooling.html">Pooling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../v2/config/networks.html">Networks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../v2/config/attr.html">Parameter Attribute</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../v2/data.html">Data Reader Interface and DataSets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../v2/data/data_reader.html">Data Reader Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../v2/data/image.html">Image Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../v2/data/dataset.html">Dataset</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../v2/run_logic.html">Training and Inference</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Fluid</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="layers.html">layers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="data_feeder.html">data_feeder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="executor.html">executor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initializer.html">initializer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="evaluator.html">evaluator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nets.html">nets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="optimizer.html">optimizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="param_attr.html">param_attr</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regularizer.html">regularizer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="io.html">io</a></li>
+</ul>
+</li>
+</ul>
+
+</nav>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index_en.html">PaddlePaddle</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index_en.html">Docs</a> &raquo;</li>
+      
+          <li><a href="index.html">Fluid</a> &raquo;</li>
+      
+    <li>profiler</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/fluid/profiler.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="profiler">
+<h1>profiler<a class="headerlink" href="#profiler" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="cuda-profiler">
+<h2>cuda_profiler<a class="headerlink" href="#cuda-profiler" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descclassname">paddle.fluid.profiler.</code><code class="descname">cuda_profiler</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span></dt>
+<dd><p>The CUDA profiler.
+This fuctions is used to profile CUDA program by CUDA runtime application
+programming interface. The profiling result will be written into
+<cite>output_file</cite> with Key-Value pair format or Comma separated values format.
+The user can set the output mode by <cite>output_mode</cite> argument and set the
+counters/options for profiling by <cite>config</cite> argument. The default config
+is [&#8216;gpustarttimestamp&#8217;, &#8216;gpustarttimestamp&#8217;, &#8216;gridsize3d&#8217;,
+&#8216;threadblocksize&#8217;, &#8216;streamid&#8217;, &#8216;enableonstart 0&#8217;, &#8216;conckerneltrace&#8217;].</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>output_file</strong> (<em>string</em>) &#8211; The output file name, the result will be
+written into this file.</li>
+<li><strong>output_mode</strong> (<em>string</em>) &#8211; The output mode has Key-Value pair format and
+Comma separated values format. It should be &#8216;kvp&#8217; or &#8216;csv&#8217;.</li>
+<li><strong>config</strong> (<em>list of string</em>) &#8211; The profiler options and counters can refer
+to &#8220;Compute Command Line Profiler User Guide&#8221;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="reset-profiler">
+<h2>reset_profiler<a class="headerlink" href="#reset-profiler" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descclassname">paddle.fluid.profiler.</code><code class="descname">reset_profiler</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>The profiler clear interface.
+reset_profiler will clear the previous time record.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="id1">
+<h2>profiler<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt>
+<code class="descclassname">paddle.fluid.profiler.</code><code class="descname">profiler</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwds</em><span class="sig-paren">)</span></dt>
+<dd><p>The profiler interface.
+Different from cuda_profiler, this profiler can be used to profile both CPU
+and GPU program. By defalut, it records the CPU and GPU operator kernels,
+if you want to profile other program, you can refer the profiling tutorial
+to add more records.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>state</strong> (<em>string</em>) &#8211; The profiling state, which should be &#8216;CPU&#8217; or &#8216;GPU&#8217;,
+telling the profiler to use CPU timer or GPU timer for profiling.
+Although users may have already specified the execution place
+(CPUPlace/CUDAPlace) in the begining, for flexibility the profiler
+would not inherit this place.</li>
+<li><strong>sorted_key</strong> (<em>string</em>) &#8211; If None, the profiling results will be printed
+in the order of first end time of events. Otherwise, the profiling
+results will be sorted by the this flag. This flag should be one
+of &#8216;calls&#8217;, &#8216;total&#8217;, &#8216;max&#8217;, &#8216;min&#8217; or &#8216;ave&#8217;.
+The <cite>calls</cite> means sorting by the number of calls.
+The <cite>total</cite> means sorting by the total execution time.
+The <cite>max</cite> means sorting by the maximum execution time.
+The <cite>min</cite> means sorting by the minimum execution time.
+The <cite>ave</cite> means sorting by the average execution time.</li>
+<li><strong>profile_path</strong> (<em>string</em>) &#8211; If state == &#8216;All&#8217;, it will write a profile
+proto output file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regularizer.html" class="btn btn-neutral float-right" title="regularizer" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="param_attr.html" class="btn btn-neutral" title="param_attr" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, PaddlePaddle developers.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
